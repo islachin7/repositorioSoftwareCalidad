@@ -1,0 +1,106 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package controlador;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import modelo.Alumno;
+import modelo.ListaAlumnos;
+
+/**
+ *
+ * @author KandL
+ */
+public class EliminarAlumno extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+       
+       String alu = request.getParameter("alumno");
+       String grado = request.getParameter("grado");
+       String sec = request.getParameter("sec");
+       String an = request.getParameter("an");
+        int año = Integer.parseInt(an);
+        Alumno a = new Alumno(alu);
+        
+        try {
+            if (a.eliminar() == false) {
+                String error = "No se Elimino el Alumno";
+                request.getSession().setAttribute("error", error);
+                request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
+            } else {
+                ListaAlumnos li = new ListaAlumnos(año);
+                LinkedList<Alumno> ve1 = li.select();
+                LinkedList<Alumno> ve2 = li.reporteAlumno(grado, sec);
+                request.getSession().setAttribute("lista", ve2);
+                request.getRequestDispatcher("reporteAlumno.jsp").forward(request, response);
+            }
+        } catch (SQLException ex) {
+            String error = "Error BDD eliminarAlumno";
+                    request.getSession().setAttribute("error", error);
+                    request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
+                }
+       
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}

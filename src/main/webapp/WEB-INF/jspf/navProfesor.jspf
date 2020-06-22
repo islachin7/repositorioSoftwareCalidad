@@ -1,0 +1,44 @@
+
+<%@page import="java.util.GregorianCalendar"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="modelo.Profesor"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="modelo.ListaProfesores"%>
+<% 
+    Calendar c2 = new GregorianCalendar();
+    int año = c2.get(Calendar.YEAR);
+    ListaProfesores po = new ListaProfesores(año);
+    LinkedList<Profesor> po1 = po.select();
+    String correo = (String) request.getSession().getAttribute("usuario"); 
+
+%>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand text-white">Año: <%=año%> &nbsp;&nbsp;&nbsp; INM. CONCEPCIÓN</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      
+    </ul>
+      <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Bienvenido: <%
+    
+          out.print(po.buscar(correo).getNombre() + " " + po.buscar(correo).getApellido());
+
+          %>
+          
+        </a>
+          <form action="cerrarsesion.do">
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <button class="dropdown-item" type="submit">Salir</button>
+          
+        </div>   
+          </form>
+         
+      </div>
+  </div>
+</nav>

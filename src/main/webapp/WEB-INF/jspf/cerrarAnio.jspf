@@ -1,0 +1,28 @@
+<div class="modal fade" id="ventanael">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        
+                        <div class="modal-header">
+                            <h4 class="modal-title text-center">Cerrar Año Escolar:</h4> 
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                           </div>
+                        
+                        <div class="modal-body">
+                         <form action="controladoreliminaranio.do" method="post">
+                           <div class="form-row">
+                                    <div class="form-group col-md-12 col-lg-12">
+                                        <label for="inputState">Año escolar:</label>
+                                        <input type="number" name="anio" class="form-control"  placeholder="Ej: 2018">
+                                    </div>
+                           </div>
+                        
+                        
+                        <div class="modal-footer">
+                             <button type="submit" class="btn btn-secondary" >Cerrar Año</button>
+                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                        </form>
+                    </div>
+                    </div>       
+            </div>
+            </div>

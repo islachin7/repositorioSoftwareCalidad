@@ -1,0 +1,30 @@
+
+<% String usuario = (String) request.getSession().getAttribute("usuario"); %>
+<% String anio = (String) request.getSession().getAttribute("año"); %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#menu-toggle" id="menu-toggle"><i class="fas fa-tachometer-alt">&nbsp; Menú</i></a>
+    <a class="navbar-brand text-white font-weight-bold"> Año: <%=anio%></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav mr-auto">
+    </ul>
+      <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Bienvenido: <%=usuario%>
+          
+       </a> 
+          <form action="cerrarsesion.do">
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="administrador2.jsp">Inicio</a>
+                <button class="dropdown-item" type="submit">Salir</button>
+          
+            </div>   
+          </form>
+         
+      </div>
+  </div>
+</nav>

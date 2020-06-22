@@ -1,0 +1,53 @@
+<%String ania = (String) request.getSession().getAttribute("año");
+ int con = Integer.parseInt(ania);%>
+<div id="wrapper" class="bg-dark">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper" class="bg-dark">
+        <ul class="sidebar-nav navbar-nav mr-auto">
+            <li class="sidebar-brand ">
+                <a href="administrador.jsp" class="text-white"> &nbsp;
+                    <img src="img/cole.ico" style="height: 20px; width: 20px;">
+                     INM. CONCEPCIÓN
+                </a>
+            </li>
+            <div class="list-group border-0 text-center text-md-left bg-dark">
+                <a href="#menu1" class="list-group-item d-inline-block collapsed bg-dark text-white" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-user-graduate"></i>&nbsp; <span>Alumnos</span> </a>
+                <div class="collapse" id="menu1">
+                    <a href="#ventana2" class="list-group-item text-dark" data-parent="#menu1" data-toggle="modal">Registrar Alumno</a>
+                    <a href="#ventana1" class="list-group-item text-dark" data-parent="#menu1"data-toggle="modal">Reporte Alumno</a>
+                </div>
+                <a href="#menu2" class="list-group-item d-inline-block collapsed bg-dark text-white" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-chalkboard-teacher"></i>&nbsp;<span>Profesores</span> </a>
+                <div class="collapse" id="menu2">
+                    <a href="#ventana3" class="list-group-item text-dark" data-parent="#menu2" data-toggle="modal">Registrar Profesor</a>
+                    <a href="<%=request.getContextPath()%>/repoprofe.do?an=<%out.print(con);%>" class="list-group-item text-dark" data-parent="#menu2">Reporte Profesor</a>
+                </div>
+                <a href="#menu3" class="list-group-item d-inline-block collapsed bg-dark text-white" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-puzzle-piece"></i>&nbsp;<span>Secciones</span> </a>
+                <div class="collapse" id="menu3">
+                    <a href="registroSeccion.jsp" class="list-group-item text-dark" data-parent="#menu3">Registrar Sección</a>
+                    <a href="reporteSeccion.jsp" class="list-group-item text-dark" data-parent="#menu3">Reporte Sección</a>
+                </div>
+                <a href="#menu4" class="list-group-item d-inline-block collapsed bg-dark text-white" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-chart-bar"></i>&nbsp;<span>Grados</span> </a>
+                <div class="collapse" id="menu4">
+                    <a href="registroGrado.jsp" class="list-group-item text-dark" data-parent="#menu4">Registrar Grado</a>
+                    <a href="reporteGrado.jsp" class="list-group-item text-dark" data-parent="#menu4">Reporte Grado</a>
+                </div>
+                <a href="#menu5" class="list-group-item d-inline-block collapsed bg-dark text-white" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-cube"></i>&nbsp;<span>Aulas</span> </a>
+                <div class="collapse" id="menu5">
+                    <a href="registroAulas.jsp" class="list-group-item text-dark" data-parent="#menu5">Registrar Aula</a>
+                    <a href="reporteAula.jsp" class="list-group-item text-dark" data-parent="#menu5">Reporte Aula</a>
+                </div>
+                <a href="#menu6" class="list-group-item d-inline-block collapsed bg-dark text-white" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-book"></i>&nbsp;<span>Cursos</span> </a>
+                <div class="collapse" id="menu6">
+                    <a href="registroCurso.jsp" class="list-group-item text-dark" data-parent="#menu6">Registrar Curso</a>
+                    <a href="reporteCurso.jsp" class="list-group-item text-dark" data-parent="#menu6">Reporte Curso</a>
+                </div>
+                <a href="#menu7" class="list-group-item d-inline-block collapsed bg-dark text-white" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-file-import"></i>&nbsp;<span>Asignaciones</span> </a>
+                <div class="collapse" id="menu7">
+                    <a href="registroAsignacion.jsp" class="list-group-item text-dark" data-parent="#menu7">Registrar Asignación</a>
+                    <a href="reporteAsignacion.jsp" class="list-group-item text-dark" data-parent="#menu7">Reporte Asignación</a>
+                </div>
+                
+            </div>
+        </ul>
+    </div> 
